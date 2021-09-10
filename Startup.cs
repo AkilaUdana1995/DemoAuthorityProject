@@ -1,9 +1,11 @@
+using DemoAuthorityProject.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -79,6 +81,10 @@ namespace DemoAuthorityProject
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            string ConnectionString = Configuration.GetConnectionString("iProduct");
+            services.AddDbContext<RegContext>(options => options.UseSqlServer(ConnectionString));
+           // services.AddDbContext<AppDBContext>(options => options.UseSqlServer(ConnectionString));
             services.AddControllersWithViews();
             // services.AddAuthentication().AddCookie();
             services.AddAuthentication(options =>

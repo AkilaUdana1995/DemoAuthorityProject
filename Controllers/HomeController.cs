@@ -55,30 +55,30 @@ namespace DemoAuthorityProject.Controllers
         
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> validate(string username, string password, string returnUrl)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (username == "AAA" && password == "123")
-            {
+        //[HttpPost("login")]
+        //public async Task<IActionResult> validate(string username, string password, string returnUrl)
+        //{
+        //    ViewData["ReturnUrl"] = returnUrl;
+        //    if (username == "AAA" && password == "123")
+        //    {
               
-                    var claims = new List<Claim>();
-                    claims.Add(new Claim("username", username));
-                    claims.Add(new Claim(ClaimTypes.NameIdentifier, username));  //simply we can add any name here...
-                   claims.Add(new Claim(ClaimTypes.Name, username));
-                    var ClaimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    var ClaimsPrincipal = new ClaimsPrincipal(ClaimsIdentity);
-                    await HttpContext.SignInAsync(ClaimsPrincipal);
-                    return Redirect(returnUrl);
+        //            var claims = new List<Claim>();
+        //            claims.Add(new Claim("username", username));
+        //            claims.Add(new Claim(ClaimTypes.NameIdentifier, username));  //simply we can add any name here...
+        //           claims.Add(new Claim(ClaimTypes.Name, username));
+        //            var ClaimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        //            var ClaimsPrincipal = new ClaimsPrincipal(ClaimsIdentity);
+        //            await HttpContext.SignInAsync(ClaimsPrincipal);
+        //            return Redirect(returnUrl);
                 
               
-                // return View("Secured");
-            }
+        //        // return View("Secured");
+        //    }
 
-            TempData["Error"] = "Error. username and/or Password is incorrect";
-            return View("login");// BadRequest();
+        //    TempData["Error"] = "Error. username and/or Password is incorrect";
+        //    return View("login");// BadRequest();
 
-        }
+        //}
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

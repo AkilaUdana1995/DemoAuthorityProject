@@ -1,11 +1,25 @@
 ﻿
-<h1>This is top secret</h1>
+<h1>User Registration Page For Admin</h1>
 <h2>welcome @User.Identity.Name</h2>
+<h2>
+       <a class="nav-link text-dark" asp-area="" asp-controller="RegDTO" asp-action="Index">New_User_Register</a>
+</h2>
+
 <ul>
-    @foreach(var c in User.Claims)
+    @foreach (var c in User.Claims)
     {
         <li>
             @c.Type: @c.Value
         </li>
     }
+
+
+
 </ul>
+
+
+
+
+@*<input id="Button1" type="button" value="button" asp-controller="RegDTO" asp-action="Index" />*@
+
+
